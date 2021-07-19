@@ -8,25 +8,46 @@ def clone():
   try:
     print("Invoke command: git init")
     subprocess.run(["git", "init"])
-  except:
-    print("Can't init")
+  except Exception as error:
+    print(error)
+    sys.exit(1)
   try:
     print("Clone Front-end")
     subprocess.run(["git", "clone", "https://github.com/AndriyMazuryk/gallery_fe.git"])
-  except:
-    print("ERROR: Unlucky clone of Front-end")
+  except Exception as error:
+    print(error)
+    sys.exit(1)
+  try:
+    print("Invoke command: git checkout dev for FE")
+    subprocess.run(["git", "checkout", "dev"], cwd="./gallery_fe")
+  except Exception as error:
+    print(error)
+    sys.exit(1)
   try:
     print("Clone Backend")
     subprocess.run(["git", "clone", "https://github.com/jjsen/gallery_be.git"])
-  except:
-    print("ERR: Unlucky clone of Backend")
+  except Exception as error:
+    print(error)
+    sys.exit(1)
+  try:
+    print("Invoke command: git checkout dev for BE")
+    subprocess.run(["git", "checkout", "dev"], cwd="./gallery_be")
+  except Exception as error:
+    print(error)
+    sys.exit(1)
+
 
 def update():
   print('code to be inserted')
 
 
 def run():
-  print('Docker-compose startup:')
+  try: 
+    print("Invoke command: docker-compose up")
+    subprocess.run(["docker-compose", "up"])
+  except Exception as error:
+    print(error)
+    sys.exit(1)
 
 
 if __name__=='__main__':

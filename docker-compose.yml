@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+        app_fe: 
+          build: 
+            context: ./gallery_fe
+            dockerfile: Dockerfile.dev
+          ports:
+            - "3000:3000"
+          volumes: 
+            - ./gallery_fe:/usr/src/app
+        app_be: 
+          build: 
+            context: ./gallery_be
+            dockerfile: Dockerfile.dev
+          ports:
+            - "4000:4000"
+          volumes: 
+            - ./gallery_be:/usr/src/app
+
